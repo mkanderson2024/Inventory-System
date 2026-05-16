@@ -3,6 +3,7 @@
 
 #include <string>
 
+// Functions for the item, mostly getter/setters
 class Item
 {
 public:
@@ -14,6 +15,7 @@ public:
     double getPrice() const;
     std::string getName() const;
 
+    // Local variables for the item
 private:
     std::string name;
     int quantity;

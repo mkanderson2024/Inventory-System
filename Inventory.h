@@ -8,6 +8,7 @@
 class Inventory
 {
 public:
+    // Declared functions
     void addItem(const Item &item);
     void removeItem(int index);
     void viewInventory() const;

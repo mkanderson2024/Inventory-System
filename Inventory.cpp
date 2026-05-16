@@ -4,6 +4,7 @@
 #include <sstream>
 #include <limits>
 
+// Add new item to inventory
 void Inventory::addItem(const Item &item)
 {
     for (size_t i = 0; i < items.size(); i++)
@@ -19,6 +20,7 @@ void Inventory::addItem(const Item &item)
     std::cout << "\nItem added. \n";
 }
 
+// Remove item from inventory
 void Inventory::removeItem(int index)
 {
     if (index >= 0 && index < items.size())
@@ -40,6 +42,7 @@ void Inventory::removeItem(int index)
     }
 }
 
+// View inventory
 void Inventory::viewInventory() const
 {
     if (items.empty())
@@ -57,6 +60,7 @@ void Inventory::viewInventory() const
     std::cout << "\nTotal inventory value: $" << totalValue << "\n";
 }
 
+// Extension of remove item, removes by quantity
 void Inventory::removeAmount(int index)
 {
     int remove = 0;
@@ -98,6 +102,7 @@ void Inventory::removeAmount(int index)
     }
 }
 
+// Calculate the total value of the inventory's prices
 double Inventory::calculateValue() const
 {
     double totalValue = 0;
@@ -110,6 +115,7 @@ double Inventory::calculateValue() const
     return totalValue;
 }
 
+// Save inventory to .csv file
 void Inventory::saveToFile(const std::string &filename) const
 {
     std::ofstream file(filename);
@@ -132,6 +138,7 @@ void Inventory::saveToFile(const std::string &filename) const
     file.close();
 }
 
+// Open inventory from .csv file
 void Inventory::loadFromFile(const std::string &filename)
 {
     std::ifstream file(filename);

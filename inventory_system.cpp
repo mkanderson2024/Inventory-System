@@ -17,14 +17,17 @@ int main()
     Inventory inv;
     inv.loadFromFile("inventory.csv");
 
+    // Set menu variables
     bool usingProgram = true;
     int input = 0;
     std::cout << "\nWelcome to your inventory program. Please Wait....\n\n";
 
+    // Create menu
     while (usingProgram)
     {
         std::this_thread::sleep_for(std::chrono::seconds(2));
 
+        // Build menu
         std::cout << "||     Main Menu     ||\n\n"
                   << "1] Add an item \n"
                   << "2] Remove an item\n"
@@ -144,9 +147,10 @@ int main()
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
-        // Handle incorrect input
+        // end Handle incorrect input
 
         std::this_thread::sleep_for(std::chrono::seconds(1));
         std::cout << "\nReturning to Main Menu....\n\n";
     }
+    // End Menu Loop
 }
