@@ -127,6 +127,8 @@ void Inventory::saveToFile(const std::string &filename) const
              << item.getPrice() << "\n";
     }
 
+    std::cout << "Saving inventory...\n\n";
+
     file.close();
 }
 
@@ -161,5 +163,7 @@ void Inventory::loadFromFile(const std::string &filename)
 
         items.push_back(item);
     }
+
+    std::cout << "Opening inventory...\n\n";
     file.close();
 }
