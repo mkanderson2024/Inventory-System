@@ -13,8 +13,8 @@
 
 int main()
 {
+    // Load inventory
     Inventory inv;
-
     inv.loadFromFile("inventory.csv");
 
     bool usingProgram = true;

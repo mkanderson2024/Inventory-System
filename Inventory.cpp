@@ -137,8 +137,10 @@ void Inventory::loadFromFile(const std::string &filename)
     std::ifstream file(filename);
 
     if (!file.is_open())
+    {
         std::cout << "No save file found. Booting with no file selected.\n";
-    return;
+        return;
+    }
 
     items.clear();
 
