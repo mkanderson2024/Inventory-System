@@ -23,3 +23,8 @@ int Item::getQuantity() const
 {
     return quantity;
 }
+
+double Item::getPrice() const
+{
+    return price;
+}

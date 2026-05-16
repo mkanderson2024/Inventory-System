@@ -81,12 +81,23 @@ int main()
             while (true)
             {
                 int reply = -1;
+                char answer = ' ';
+
                 std::cout << "\nEnter Index Number to remove Item.\n";
                 std::cout << "Item to remove: ";
                 std::cin >> reply;
                 reply = reply - 1;
 
                 inv.removeItem(reply);
+
+                std::cout << "Remove more items (Y/N)? ";
+                std::cin >> answer;
+                answer = std::tolower(answer);
+
+                if (answer == 'n')
+                {
+                    break;
+                }
             }
         }
         // End add an Item

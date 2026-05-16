@@ -17,6 +17,7 @@ void Inventory::removeItem(int index)
         else
         {
             items.erase(items.begin() + index);
+            std::cout << "\nItem removed\n";
         }
     }
 
@@ -44,13 +45,40 @@ void Inventory::viewInventory() const
 void Inventory::removeAmount(int index)
 {
     int remove = 0;
-    int currentQauntity = items[index].getQuantity();
-    int newQuantity = 0;
+    while (remove == 0)
+    {
+        int currentQauntity = items[index].getQuantity();
+        int newQuantity = 0;
 
-    std::cout << "Current quantity: " << currentQauntity << "\n";
-    std::cout << "Amount to remove: ";
-    std::cin >> remove;
+        std::cout << "Current quantity: " << currentQauntity << "\n";
+        std::cout << "Amount to remove: ";
+        std::cin >> remove;
 
-    newQuantity = currentQauntity - remove;
-    items[index].setQuantity(newQuantity);
+        if (remove > 0 && remove <= currentQauntity)
+        {
+            newQuantity = currentQauntity - remove;
+            items[index].setQuantity(newQuantity);
+            std::cout << newQuantity << " removed";
+        }
+
+        else
+        {
+            std::cout << "\nInvalid entry. Please input a positive number less than current inventory amount.\n";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            remove = 0;
+        }
+    }
+}
+
+double Inventory::calculateValue()
+{
+    double totalValue = 0;
+
+    for (const auto &item : items)
+    {
+        totalValue += item.getQuantity() * item.getPrice();
+    }
+
+    std::cout << "Total inventory value: $" << totalValue << "\n";
 }

@@ -11,6 +11,7 @@ public:
     void print() const;
     void setQuantity(int amount);
     int getQuantity() const;
+    double getPrice() const;
 
 private:
     std::string name;

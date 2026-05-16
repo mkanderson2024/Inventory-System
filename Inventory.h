@@ -11,6 +11,7 @@ public:
     void removeItem(int index);
     void viewInventory() const;
     void removeAmount(int index);
+    double calculateValue();
 
 private:
     std::vector<Item> items;
