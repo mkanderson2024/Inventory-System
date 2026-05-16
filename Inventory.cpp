@@ -10,7 +10,14 @@ void Inventory::removeItem(int index)
 {
     if (index >= 0 && index < items.size())
     {
-        items.erase(items.begin() + index);
+        if (items[index].getQuantity() > 1)
+        {
+            removeAmount(index);
+        }
+        else
+        {
+            items.erase(items.begin() + index);
+        }
     }
 
     else
@@ -32,4 +39,18 @@ void Inventory::viewInventory() const
         std::cout << i + 1 << "] ";
         items[i].print();
     }
+}
+
+void Inventory::removeAmount(int index)
+{
+    int remove = 0;
+    int currentQauntity = items[index].getQuantity();
+    int newQuantity = 0;
+
+    std::cout << "Current quantity: " << currentQauntity << "\n";
+    std::cout << "Amount to remove: ";
+    std::cin >> remove;
+
+    newQuantity = currentQauntity - remove;
+    items[index].setQuantity(newQuantity);
 }

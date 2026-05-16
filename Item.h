@@ -9,6 +9,8 @@ public:
     Item(const std::string &name, int quantity, double price);
 
     void print() const;
+    void setQuantity(int amount);
+    int getQuantity() const;
 
 private:
     std::string name;
