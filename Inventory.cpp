@@ -3,7 +3,17 @@
 
 void Inventory::addItem(const Item &item)
 {
+    for (size_t i = 0; i < items.size(); i++)
+    {
+        if (items[i].getName() == item.getName())
+        {
+            items[i].setQuantity(items[i].getQuantity() + item.getQuantity());
+            std::cout << "\nItem added to exsisting inventory item.\n";
+            return;
+        }
+    }
     items.push_back(item);
+    std::cout << "\nItem added. \n";
 }
 
 void Inventory::removeItem(int index)

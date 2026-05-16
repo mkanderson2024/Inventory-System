@@ -28,3 +28,8 @@ double Item::getPrice() const
 {
     return price;
 }
+
+std::string Item::getName() const
+{
+    return name;
+}

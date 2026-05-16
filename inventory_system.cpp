@@ -61,7 +61,6 @@ int main()
                 inv.addItem(Item(name, amount, price));
 
                 // Continue option
-                std::cout << "\nItem added. \n";
                 std::cout << "Add another item (Y/N)? ";
                 std::cin >> reply;
                 reply = std::tolower(reply);

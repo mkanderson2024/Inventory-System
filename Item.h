@@ -12,6 +12,7 @@ public:
     void setQuantity(int amount);
     int getQuantity() const;
     double getPrice() const;
+    std::string getName() const;
 
 private:
     std::string name;
