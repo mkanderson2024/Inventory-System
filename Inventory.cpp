@@ -29,7 +29,7 @@ void Inventory::viewInventory() const
 
     for (int i = 0; i < items.size(); i++)
     {
-        std::cout << i << "] ";
+        std::cout << i + 1 << "] ";
         items[i].print();
     }
 }

@@ -9,6 +9,7 @@
 #include <limits>
 #include "Item.h"
 #include "Inventory.h"
+#include <cctype>
 
 int main()
 {
@@ -16,13 +17,13 @@ int main()
 
     bool usingProgram = true;
     int input = 0;
-    std::cout << "Welcome to your inventory program. Please Wait....\n\n";
+    std::cout << "\nWelcome to your inventory program. Please Wait....\n\n";
 
     while (usingProgram)
     {
         std::this_thread::sleep_for(std::chrono::seconds(2));
 
-        std::cout << "||     Main Menu     ||\n"
+        std::cout << "||     Main Menu     ||\n\n"
                   << "1] Add an item \n"
                   << "2] Remove an item\n"
                   << "3] View Inventory\n"
@@ -37,10 +38,9 @@ int main()
         // Add an Item
         if (input == 1)
         {
-
+            std::cout << "<<Add an item selected>>\n";
             while (true)
             {
-                std::cout << "\nAdd an item selected\n";
                 // Input variable for adding items loop
                 char reply = ' ';
 
@@ -50,19 +50,23 @@ int main()
                 double price = 0.00;
 
                 // Input collection
-                std::cout << "Enter Item name ";
+                std::cout << "\nEnter Item name: ";
                 std::cin >> name;
-                std::cout << "\nEnter amount ";
+                std::cout << "Enter amount: ";
                 std::cin >> amount;
-                std::cout << "\nEnter price ";
+                std::cout << "Enter price: $";
                 std::cin >> price;
 
+                // Adds item to inventory class
                 inv.addItem(Item(name, amount, price));
+
+                // Continue option
                 std::cout << "\nItem added. \n";
                 std::cout << "Add another item (Y/N)? ";
                 std::cin >> reply;
+                reply = std::tolower(reply);
 
-                if (reply == 'N')
+                if (reply == 'n')
                 {
                     break;
                 }
@@ -73,14 +77,24 @@ int main()
         // Remove an Item
         else if (input == 2)
         {
-            std::cout << "";
+            std::cout << "<<Remove Item Selected\n>>";
+            while (true)
+            {
+                int reply = -1;
+                std::cout << "\nEnter Index Number to remove Item.\n";
+                std::cout << "Item to remove: ";
+                std::cin >> reply;
+                reply = reply - 1;
+
+                inv.removeItem(reply);
+            }
         }
         // End add an Item
 
         // View Inventory
         else if (input == 3)
         {
-            std::cout << "View Inventory Selected.\n";
+            std::cout << "<<View Inventory Selected>>\n";
 
             inv.viewInventory();
         }
@@ -89,9 +103,10 @@ int main()
         // Leave Program
         else if (input == 4)
         {
-            std::cout << "Leave Progam Selected.\n"
+            std::cout << "<<Leave Progam Selected>>\n"
                       << "Thank you for using the program.\n";
             usingProgram = false;
+            continue;
         }
         // End leave program
 
