@@ -15,6 +15,8 @@ int main()
 {
     Inventory inv;
 
+    inv.loadFromFile("inventory.csv");
+
     bool usingProgram = true;
     int input = 0;
     std::cout << "\nWelcome to your inventory program. Please Wait....\n\n";
@@ -76,11 +78,13 @@ int main()
         // Remove an Item
         else if (input == 2)
         {
-            std::cout << "<<Remove Item Selected\n>>";
+            std::cout << "<<Remove Item Selected>>\n\n";
             while (true)
             {
                 int reply = -1;
                 char answer = ' ';
+
+                inv.viewInventory();
 
                 std::cout << "\nEnter Index Number to remove Item.\n";
                 std::cout << "Item to remove: ";
@@ -104,9 +108,20 @@ int main()
         // View Inventory
         else if (input == 3)
         {
-            std::cout << "<<View Inventory Selected>>\n";
+            while (true)
+            {
+                char answer = ' ';
 
-            inv.viewInventory();
+                std::cout << "<<View Inventory Selected>>\n\n";
+                inv.viewInventory();
+
+                std::cout << "\nSelect any key to return to Main Menu ";
+                std::cin >> answer;
+
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                break;
+            }
         }
         // End View Inventory
 
@@ -116,6 +131,8 @@ int main()
             std::cout << "<<Leave Progam Selected>>\n"
                       << "Thank you for using the program.\n";
             usingProgram = false;
+
+            inv.saveToFile("inventory.csv");
             continue;
         }
         // End leave program

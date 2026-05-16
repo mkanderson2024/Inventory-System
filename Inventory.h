@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Item.h"
+#include <string>
 
 class Inventory
 {
@@ -11,7 +12,11 @@ public:
     void removeItem(int index);
     void viewInventory() const;
     void removeAmount(int index);
-    double calculateValue();
+    double calculateValue() const;
+
+    // For saving and loading
+    void saveToFile(const std::string &filename) const;
+    void loadFromFile(const std::string &filename);
 
 private:
     std::vector<Item> items;
